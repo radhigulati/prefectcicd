@@ -1,0 +1,11 @@
+{
+    "block_type_slug": "github",
+    "block_document_name": "repo",
+    "data": {
+        "repository": "https://github.com/radhigulati/prefectcicd.git",
+        "reference": {
+            "branch": "main"
+        },
+        "token": "$GITHUB_TOKEN"
+    }
+} 
