@@ -25,4 +25,11 @@ def main_flow():
     print(result)
 
 if __name__ == "__main__":
-    main_flow() 
+    flow.from_source(
+        source=".",  # Current directory
+        entrypoint="flow.py:main_flow",
+    ).deploy(
+        name="scheduled-flow",
+        work_pool_name="my-managed-pool",
+        job_variables={"pip_packages": ["pandas"]}
+    ) 
