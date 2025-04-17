@@ -1,8 +1,6 @@
 from prefect import flow, task
 import pandas as pd
 from datetime import datetime
-from prefect.deployments import Deployment
-from prefect.server.schemas.schedules import CronSchedule
 
 @task
 def create_data():
@@ -27,12 +25,4 @@ def main_flow():
     print(result)
 
 if __name__ == "__main__":
-    # Create a deployment
-    deployment = Deployment.build_from_flow(
-        flow=main_flow,
-        name="scheduled-flow",
-        work_pool_name="my-managed-pool",
-        schedule=CronSchedule(cron="0 15 * * *"),  # 3:00 PM daily
-        infra_overrides={"env": {"PREFECT_LOGGING_LEVEL": "DEBUG"}}
-    )
-    deployment.apply() 
+    main_flow() 
